@@ -1,3 +1,15 @@
+// let swiper = new Swiper(".mySwiper", {
+//   slidesPerView: 6, // Number of slides shown at once
+//   spaceBetween: 5, // Space between each slide
+//   // freeMode: true, // Allows the slides to scroll freely
+//   // loop: true, // Infinite loop for slides
+//   // Optional autoplay
+//   // autoplay: {
+//   //   delay: 2500,
+//   //   disableOnInteraction: false,
+//   // },
+// });
+
 const menuItem = document.querySelectorAll(".menuItem");
 
 const displayActiveNone = () => {
@@ -36,14 +48,6 @@ menuItem.forEach((menu) => {
   });
 });
 
-// function removeNotifyPop() {
-//   const notifyPop = document.querySelector(".notification_popup");
-//   const popMessage = document.querySelectorAll(".notification_count");
-
-//   notifyPop.style.display = "none";
-//   // popMessage.forEach((count) => (count.style.display = "block"));
-// }
-
 // MESSAGES SECTION
 
 //  add box-shadow to message when message menuItem is clicked
@@ -53,10 +57,6 @@ const messages = document.querySelector(".messages");
 messageMenuItem.addEventListener("click", () => {
   messages.style.boxShadow = "0 0 1rem var(--color-primary)";
   messageMenuItem.querySelector(".notification_count").style.display = "none";
-
-  // setTimeout(() => {
-  //   messages.style.boxShadow = "none";
-  // }, 3000);
 });
 
 // MESSAGES SEARCH
@@ -94,23 +94,13 @@ messagesSearch.addEventListener("keyup", () => {
 const themeMenuItem = document.querySelector("#theme_menuItem");
 
 const theme = document.querySelector(".theme");
-const themeCard = document.querySelector(".theme_card");
+// const themeCard = document.querySelector(".theme_card");
 
 function openModal() {
-  theme.classList.add("open");
-  themeCard.classList.add("open");
   theme.style.display = "grid";
 }
 
 function closeModal(e) {
-  theme.classList.remove("open");
-  themeCard.classList.remove("open");
-  // Optional: Delay setting display to none to allow animation to complete
-
-  setTimeout(() => {
-    theme.style.display = "none"; // Hide the theme after closing
-  }, 500); // Match the duration of the transition
-
   if (e.target.classList.contains("theme")) {
     theme.style.display = "none";
   }
@@ -124,7 +114,6 @@ theme.addEventListener("click", closeModal);
 
 // FONT SIZE CHANGE
 
-const root = document.querySelector(":root");
 const resizeSpan = document.querySelectorAll(".font_resizer");
 
 const removeResizeActive = () => {
@@ -162,6 +151,8 @@ resizeSpan.forEach((size) => {
 });
 
 // PRIMARY COLOR CHANGE
+
+const root = document.querySelector(":root");
 
 const primaryColors = document.querySelectorAll(".choose_color");
 
@@ -246,3 +237,45 @@ BG3.addEventListener("click", () => {
   BG2.classList.remove("active");
   BG3.classList.add("active");
 });
+
+// PERSONAL PROFILE
+
+const personalProfile = document.querySelector(".personal_profile");
+
+const profileLink1 = document.querySelector(".left .profile");
+const profileLink2 = document.querySelector("nav .profile_photo");
+
+const profileCloseBtn = document.querySelector(".personal_profile_close span");
+
+function profileDisplay() {
+  personalProfile.style.display = "grid";
+}
+
+function removeProfile() {
+  personalProfile.style.display = "none";
+}
+
+profileLink1.addEventListener("click", profileDisplay);
+profileLink2.addEventListener("click", profileDisplay);
+
+profileCloseBtn.addEventListener("click", removeProfile);
+
+// PROFILE PICS UPLOAD
+
+const profileUpload = document.querySelector("#profile_upload");
+
+const personalProfilePics = document.querySelectorAll(".personal_profile img");
+
+profileUpload.addEventListener("change", () => {
+  personalProfilePics.src = URL.createObjectURL(
+    document.querySelector("#profile_upload").files[0]
+  );
+});
+
+// FEED LIKE
+
+// const liking = document.querySelector(".love_feed");
+
+// liking.addEventListener("click", () => {
+//   liking.classList.toggle("like_feed");
+// });

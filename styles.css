@@ -50,7 +50,7 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -96,6 +96,11 @@ img {
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+  transition: all 400ms ease;
+}
+
+.profile_photo:hover {
+  opacity: 0.7;
 }
 
 /* ===================== NAVBAR ======================== */
@@ -148,6 +153,10 @@ nav .nav_container h2 span {
   background: transparent;
 }
 
+nav .profile_photo {
+  cursor: pointer;
+}
+
 /* ============ MAIN CONTAINER ============ */
 
 main {
@@ -163,10 +172,9 @@ main {
 
 /* ============ LEFT CONTAINER ============ */
 
-main .container .left {
-  height: max-content;
+main .main_container .left {
   position: sticky;
-  /* top: 5rem; */
+  height: max-content;
   top: var(--sticky-top-left);
 }
 
@@ -201,7 +209,6 @@ main .container .left {
   align-items: center;
   justify-content: start;
   gap: 2rem;
-
   transition: all 400ms ease;
   position: relative;
   cursor: pointer;
@@ -253,6 +260,7 @@ main .container .left {
   color: white;
   padding: 0.1rem 0.4rem;
   font-size: 0.7rem;
+  width: fit-content;
   border-radius: 0.8rem;
   background: var(--color-danger);
 }
@@ -281,23 +289,22 @@ main .container .left {
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
   background: var(--color-white);
-  box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
-  z-index: 9999;
-
-  background-color: red;
+  box-shadow: 0 0 1rem var(--color-primary);
+  z-index: 20;
 
   display: none;
 }
 
-/* .notification_popup::before {
+.notification_popup::before {
   content: "";
   width: 1.2rem;
   height: 1.2rem;
   display: block;
-  background: green;
+  background: var(--color-white);
   position: absolute;
-  left: .6rem;
-} */
+  transform: rotate(45deg);
+  left: -0.6rem;
+}
 
 .notification_body {
   display: flex;
@@ -322,15 +329,26 @@ main .container .left {
 
 /* ============ MIDDLE CONTAINER ============ */
 
-.story_container {
+/* .story_container.swiper {
+  overflow: hidden;
+  width: 100%;
+  max-width: 660px;
+} */
+
+.story_wrapper {
   display: flex;
   /* justify-content: space-between; */
   height: 12rem;
+  /* max-width: 860px; */
   gap: 0.5rem;
   width: 100%;
   /* overflow-x: scroll; */
   /* max-width: fit-content; */
 }
+
+/* .swiper-slide {
+  flex-shrink: 0;
+  width: auto; /* Allows Swiper to control width based on slidesPerView */
 
 .story {
   display: flex;
@@ -341,12 +359,40 @@ main .container .left {
   border-radius: var(--card-border-radius);
   color: white;
   font-size: 0.75rem;
-  /* max-width: max-content; */
-  /* width: max-content; */
   width: 100%;
-
   position: relative;
   overflow: hidden;
+}
+
+.middle .add_story {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+
+  padding: var(--card-padding);
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  background: var(--color-primary);
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--card-border-radius);
+}
+
+.middle .add_story::before {
+  content: "";
+  display: block;
+  height: 5rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(transparent, var(--color-primary));
+}
+
+.middle .add_story i {
+  margin-top: 1rem;
 }
 
 .story_container .story:nth-child(1) {
@@ -393,9 +439,7 @@ main .container .left {
   position: absolute;
   bottom: 0;
   left: 0;
-
-  background: var(--color-primary);
-  /* background: linear-gradient(transparent, rgba(0, 0, 0, 0.75)); */
+  background: linear-gradient(transparent, var(--color-primary));
 }
 
 /* ----------- MIDDLE FORM ------------- */
@@ -439,6 +483,7 @@ main .container .left {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  position: relative;
 }
 
 .feed_heading_profile {
@@ -450,6 +495,60 @@ main .container .left {
 
 .feed_heading_profile_info p {
   font-size: 0.8rem;
+}
+
+/* FEED EDIT MENU */
+
+.feed_edit {
+  cursor: pointer;
+}
+
+.like_feed {
+  font-weight: normal;
+  background-color: var(--color-danger);
+}
+
+.love_feed {
+  background-color: var(--color-danger);
+  width: fit-content;
+}
+
+.feed_edit_menu {
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: absolute;
+  top: 2.4rem;
+  right: 0;
+  box-shadow: 0 0 0.3rem var(--color-primary);
+  transform: scale(0);
+  transition: 400ms ease all;
+  transform-origin: top right;
+}
+
+.feed_edit:hover .feed_edit_menu {
+  transform: scale(1);
+}
+
+.feed_edit_menu li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--color-gray);
+  transition: 400ms ease all;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.feed_edit_menu li:hover {
+  color: var(--color-dark);
+}
+
+.feed_edit_menu li:last-child:hover {
+  color: var(--color-danger);
 }
 
 .feed_img {
@@ -473,6 +572,15 @@ main .container .left {
 
 .feed_actions i {
   cursor: pointer;
+  /* font-weight: normal; */
+}
+
+.feed_actions i:first-child {
+  font-weight: normal;
+}
+
+.feed_actions i.bookmark {
+  font-weight: normal;
 }
 
 .liked_by {
@@ -587,7 +695,7 @@ main .right {
   align-items: center;
   font-size: 1.2rem;
   margin: 4rem 0;
-  color: #888; /* Adjust color as desired */
+  color: #888;
 }
 
 .message_body:last-child {
@@ -656,13 +764,6 @@ main .right {
 /* ============ THEME ============== */
 
 .theme {
-  /*Initialstateforscalingandrotation*/
-  transform: scale(0);
-  /*Startscaleddownandnotrotated*/
-  opacity: 0;
-  /*Startwithzeroopacity*/
-  transition: all 200s ease, opacity 0.5s ease;
-  /*Transitionforsmootheffect*/
   width: 100%;
   height: 100%;
   background: rgba(225, 225, 225, 0.5);
@@ -675,32 +776,13 @@ main .right {
   z-index: 10;
 }
 
-/* This class will be added when the theme is opened */
-.theme.open {
-  transform: scale(1);
-  /*Scaletofullsizeandrotate*/
-  opacity: 1;
-  /*Fullopacity*/
-}
-
 .theme_card {
-  transform: scale(0) rotate(0deg);
-  transition: all 100s ease;
   padding: 3rem;
   border-radius: var(--card-border-radius);
   background: var(--color-white);
   width: 50%;
   box-shadow: 0 0 1rem var(--color-primary);
   z-index: 25;
-  -webkit-transition: all 100s ease;
-  -moz-transition: all 100s ease;
-  -ms-transition: all 100s ease;
-  -o-transition: all 100s ease;
-}
-
-/* This class will be added when the theme card is opened */
-.theme_card.open {
-  transform: scale(1) rotate(360deg); /* Scale to full size and rotate */
 }
 
 .font {
@@ -721,7 +803,6 @@ main .right {
   height: 0.3rem;
   width: 100%;
   background: var(--color-secondary);
-  /* padding: var(--search-padding); */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -834,12 +915,79 @@ main .right {
   color: white;
 }
 
+/* PERSONAL PROFILE POP UP */
+
+.personal_profile {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(225, 225, 225, 0.5);
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+
+  display: none;
+}
+
+.personal_profile_wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile_popup {
+  width: 20rem;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  background: var(--color-white);
+}
+
+.personal_profile_info {
+  line-height: 1.7;
+}
+
+.personal_profile_info p {
+  color: var(--color-gray);
+  font-size: 0.95rem;
+}
+
+.personal_profile .profile_photo {
+  width: 10rem;
+  aspect-ratio: 1/1;
+  margin: 2rem auto;
+}
+
+#profile_upload {
+  display: none;
+}
+
+.personal_profile label {
+  width: 80%;
+}
+
+.personal_profile button {
+  display: block;
+  margin: 1rem auto;
+  width: 80%;
+}
+
+.personal_profile_close {
+  color: var(--color-white);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.personal_profile_close span {
+  cursor: pointer;
+}
+
 /* MEDIA QUERY */
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1280px) {
   .container {
     width: 96%;
-    /* background: red; */
   }
 
   .sidebar h3 {
@@ -883,7 +1031,7 @@ main .right {
   main .container .left {
     grid-column: 3/4;
     position: fixed;
-    top: 5rem;
+    top: 8rem;
     right: 2%;
     bottom: 0;
   }
