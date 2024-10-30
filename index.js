@@ -1,13 +1,35 @@
-// let swiper = new Swiper(".mySwiper", {
-//   slidesPerView: 6, // Number of slides shown at once
-//   spaceBetween: 5, // Space between each slide
-//   // freeMode: true, // Allows the slides to scroll freely
-//   // loop: true, // Infinite loop for slides
-//   // Optional autoplay
-//   // autoplay: {
-//   //   delay: 2500,
-//   //   disableOnInteraction: false,
-//   // },
+// const swiper = new Swiper('.mySwiper', {
+//   slidesPerView: 6, // Automatically adjusts slides based on size
+//   spaceBetween: 10,
+//   navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//   },
+//   pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true,
+//   },
+//   autoplay: false, // Disable autoplay for user control
+//   grabCursor: true, // Change cursor to pointer when hovering
+//   touchRatio: 1, // Enable touch sliding
+//   breakpoints: {
+//       320: {
+//           slidesPerView: 3,
+//           spaceBetween: 5,
+//       },
+//       640: {
+//           slidesPerView: 4,
+//           spaceBetween: 10,
+//       },
+//       1024: {
+//           slidesPerView: 5,
+//           spaceBetween: 10,
+//       },
+//       1280: {
+//           slidesPerView: 6,
+//           spaceBetween: 10,
+//       },
+//   },
 // });
 
 const menuItem = document.querySelectorAll(".menuItem");
@@ -48,6 +70,10 @@ menuItem.forEach((menu) => {
   });
 });
 
+// window.addEventListener("scroll", () => {
+//   notifyPop.style.display = "none";
+// });
+
 // MESSAGES SECTION
 
 //  add box-shadow to message when message menuItem is clicked
@@ -57,6 +83,10 @@ const messages = document.querySelector(".messages");
 messageMenuItem.addEventListener("click", () => {
   messages.style.boxShadow = "0 0 1rem var(--color-primary)";
   messageMenuItem.querySelector(".notification_count").style.display = "none";
+
+  setTimeout(() => {
+    messages.style.boxShadow = "none";
+  }, 3000);
 });
 
 // MESSAGES SEARCH
@@ -94,23 +124,33 @@ messagesSearch.addEventListener("keyup", () => {
 const themeMenuItem = document.querySelector("#theme_menuItem");
 
 const theme = document.querySelector(".theme");
-// const themeCard = document.querySelector(".theme_card");
-
-function openModal() {
-  theme.style.display = "grid";
-}
-
-function closeModal(e) {
-  if (e.target.classList.contains("theme")) {
-    theme.style.display = "none";
-  }
-}
+const themeWrapper = document.querySelector(".theme_wrapper");
 
 // open modal
-themeMenuItem.addEventListener("click", openModal);
+themeMenuItem.addEventListener("click", () => {
+  theme.style.display = "grid";
+
+  setTimeout(() => themeWrapper.classList.add("active"), 10);
+});
 
 // close modal
-theme.addEventListener("click", closeModal);
+theme.addEventListener("click", (e) => {
+  if (e.target.classList.contains("theme")) {
+    setTimeout(() => (theme.style.display = "none"), 600);
+
+    themeWrapper.classList.remove("active");
+  }
+});
+
+// close modal  btn
+
+const themeBtnClose = document.querySelector(".theme_close");
+
+themeBtnClose.addEventListener("click", (e) => {
+  setTimeout(() => (theme.style.display = "none"), 600);
+
+  themeWrapper.classList.remove("active");
+});
 
 // FONT SIZE CHANGE
 
@@ -133,17 +173,17 @@ resizeSpan.forEach((size) => {
     if (size.classList.contains("font_resizer_1")) {
       fontSize = "8px";
     } else if (size.classList.contains("font_resizer_2")) {
-      fontSize = "11px";
+      fontSize = "10px";
     } else if (size.classList.contains("font_resizer_3")) {
-      fontSize = "14px";
+      fontSize = "12px";
     } else if (size.classList.contains("font_resizer_4")) {
-      fontSize = "17px";
+      fontSize = "14px";
     } else if (size.classList.contains("font_resizer_5")) {
-      fontSize = "20px";
+      fontSize = "16px";
     }
 
     // Add active class to the clicked element
-    size.classList.add("active");
+    size.classList.toggle("active");
 
     // Change font size of the root html element
     document.querySelector("html").style.fontSize = fontSize;
@@ -242,23 +282,50 @@ BG3.addEventListener("click", () => {
 
 const personalProfile = document.querySelector(".personal_profile");
 
+const profileWrapper = document.querySelector(".personal_profile_wrapper");
+
 const profileLink1 = document.querySelector(".left .profile");
 const profileLink2 = document.querySelector("nav .profile_photo");
 
-const profileCloseBtn = document.querySelector(".personal_profile_close span");
+profileLink1.addEventListener("click", (e) => {
+  // e.preventDefault();
 
-function profileDisplay() {
   personalProfile.style.display = "grid";
-}
+  setTimeout(() => profileWrapper.classList.add("active"), 10);
+});
 
-function removeProfile() {
-  personalProfile.style.display = "none";
-}
+profileLink2.addEventListener("click", (e) => {
+  e.preventDefault();
 
-profileLink1.addEventListener("click", profileDisplay);
-profileLink2.addEventListener("click", profileDisplay);
+  personalProfile.style.display = "grid";
+  setTimeout(() => profileWrapper.classList.add("active"), 10);
+});
 
-profileCloseBtn.addEventListener("click", removeProfile);
+personalProfile.addEventListener("click", (e) => {
+  if (e.target === personalProfile) {
+    setTimeout(() => (personalProfile.style.display = "none"), 300);
+
+    profileWrapper.classList.remove("active");
+  }
+});
+
+// close personal profile button
+const profileCloseBtn = document.querySelector(".personal_profile_close");
+
+profileCloseBtn.addEventListener("click", () => {
+  setTimeout(() => (personalProfile.style.display = "none"), 300);
+
+  profileWrapper.classList.remove("active");
+});
+
+// profile log out
+const profileLogout = document.querySelector(".profile_logout");
+
+profileLogout.addEventListener("click", () => {
+  setTimeout(() => (personalProfile.style.display = "none"), 300);
+
+  profileWrapper.classList.remove("active");
+});
 
 // PROFILE PICS UPLOAD
 
@@ -272,10 +339,108 @@ profileUpload.addEventListener("change", () => {
   );
 });
 
+//  MIDDLE FORM
+
+const middleFormPostBtn = document.querySelector(".middle_post_btn");
+const middleFormPostInput = document.querySelector("#create_post");
+
+middleFormPostBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  middleFormPostInput.value = "";
+});
+
+// ADD POST
+
+const addPostLink = document.querySelector(".add_post_link");
+const leftBtn = document.querySelector(".left_btn");
+
+const addPost = document.querySelector(".add_post");
+const addPostWrapper = document.querySelector(".add_post_wrapper");
+const addPostInput = document.querySelector(".add_post_input");
+
+addPostLink.addEventListener("click", () => {
+  // e.preventDefault();
+
+  addPost.style.display = "grid";
+  setTimeout(() => addPostWrapper.classList.add("active"), 10);
+});
+
+// left btn create post
+
+leftBtn.addEventListener("click", () => {
+  // e.preventDefault();
+
+  addPost.style.display = "grid";
+  setTimeout(() => addPostWrapper.classList.add("active"), 10);
+});
+
+addPost.addEventListener("click", (e) => {
+  if (e.target === addPost) {
+    setTimeout(() => (addPost.style.display = "none"), 300);
+
+    addPostWrapper.classList.remove("active");
+
+    addPostInput.value = "";
+  }
+});
+
+const addPostSubmit = document.querySelector(".add_post_submit");
+const addPostClose = document.querySelector(".add_post_close");
+
+// close add post
+
+addPostSubmit.addEventListener("click", () => {
+  setTimeout(() => (addPost.style.display = "none"), 300);
+
+  addPostWrapper.classList.remove("active");
+
+  addPostInput.value = "";
+});
+
+addPostClose.addEventListener("click", () => {
+  setTimeout(() => (addPost.style.display = "none"), 300);
+
+  addPostWrapper.classList.remove("active");
+
+  addPostInput.value = "";
+});
+
 // FEED LIKE
 
-// const liking = document.querySelector(".love_feed");
+const liking = document.querySelector(".love_feed");
 
-// liking.addEventListener("click", () => {
-//   liking.classList.toggle("like_feed");
-// });
+liking.addEventListener("click", () => {
+  liking.classList.toggle("like_feed");
+});
+
+const bookmark = document.querySelector(".bookmark");
+
+bookmark.addEventListener("click", () => {
+  bookmark.classList.toggle("toggle_bookmark");
+});
+
+//  REQUEST
+
+const requestBtns = document.querySelector(".request_btns");
+const accept = document.querySelectorAll("#accept");
+const decline = document.querySelectorAll("#decline");
+const acceptRequest = document.querySelectorAll(".accept_request");
+
+// accept request
+accept.forEach((accept) => {
+  accept.addEventListener("click", () => {
+    accept.parentElement.style.display = "none";
+
+    accept.parentElement.parentElement.querySelector(
+      ".accept_request"
+    ).style.display = "block";
+  });
+});
+
+// decline request
+decline.forEach((request) => {
+  request.addEventListener("click", () => {
+    request.parentElement.parentElement.style.display = "none";
+  });
+});

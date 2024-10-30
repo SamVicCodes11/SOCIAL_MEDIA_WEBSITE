@@ -16,6 +16,10 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- Add Swiper CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+
     <!-- SWIPER JS LINK -->
 
     <!-- <link
@@ -40,7 +44,7 @@
         </div>
 
         <div class="create">
-          <label for="create_post" class="btn btn_primary">Create</label>
+          <label class="btn btn_primary add_post_link">Add Post</label>
 
           <div class="profile_photo">
             <img src="/images/MY PIC.jpg" alt="profile_photo" />
@@ -222,7 +226,7 @@
           <!-- ------------------------ END OF SIDEBAR ----------------------- -->
 
           <div class="left_btn">
-            <label class="btn btn_primary" for="create_post">Create Post</label>
+            <label class="btn btn_primary">Create Post</label>
           </div>
         </div>
 
@@ -233,85 +237,48 @@
         <div class="middle">
           <!-- ------------------------ STORY CONTAINER ----------------------- -->
 
-          <div class="stories">
-            <div class="story_container swiper mySwiper">
-              <div class="story_wrapper swiper-wrapper">
-                <!-- ----------- STORY ---------------- -->
-
-                <div class="add_story swiper-slide">
-                  <i class="fa fa-add"></i>
-
-                  <p>Add Your Story</p>
-                </div>
-
-                <div class="story swiper-slide">
-                  <div class="profile_photo">
-                    <img src="/images/profile-8.jpg" alt="story_profile" />
-                  </div>
-
-                  <p>Your Story</p>
-                </div>
-
-                <div class="story swiper-slide">
-                  <div class="profile_photo">
-                    <img src="/images/profile-9.jpg" alt="story_profile" />
-                  </div>
-
-                  <p>Your Story</p>
-                </div>
-
-                <p>Your Story</p>
+          <div class="stories swiper mySwiper">
+            <div class="story_wrapper swiper-wrapper">
+              <!-- Add Story Button -->
+              <div class="add_story swiper-slide">
+                <i class="fa fa-plus-circle"></i>
+                <p>Add Your Story</p>
               </div>
-              <div class="story swiper-slide">
-                <div class="profile_photo">
-                  <img src="/images/profile-9.jpg" alt="story_profile" />
-                </div>
 
-                <p>Your Story</p>
-              </div>
-              <div class="story swiper-slide">
-                <div class="profile_photo">
-                  <img src="/images/profile-9.jpg" alt="story_profile" />
-                </div>
-
-                <p>Your Story</p>
-              </div>
+              <!-- Story Slides -->
 
               <div class="story swiper-slide">
                 <div class="profile_photo">
-                  <img src="/images/profile-10.jpg" alt="story_profile" />
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
                 </div>
-
-                <p>Your Story</p>
+                <p>Your Story 3</p>
               </div>
-
               <div class="story swiper-slide">
                 <div class="profile_photo">
-                  <img src="/images/profile-11.jpg" alt="story_profile" />
+                  <img src="/images/profile-4.jpg" alt="story_profile" />
                 </div>
-
-                <p>Your Story</p>
+                <p>Your Story 4</p>
               </div>
-
               <div class="story swiper-slide">
                 <div class="profile_photo">
-                  <img src="/images/profile-12.jpg" alt="story_profile" />
+                  <img src="/images/profile-5.jpg" alt="story_profile" />
                 </div>
-
-                <p>Your Story</p>
+                <p>Your Story 5</p>
               </div>
-
               <div class="story swiper-slide">
                 <div class="profile_photo">
-                  <img src="/images/profile-13.jpg" alt="story_profile" />
+                  <img src="/images/profile-6.jpg" alt="story_profile" />
                 </div>
-
-                <p>Your Story</p>
+                <p>Your Story 6</p>
               </div>
             </div>
 
-            <!-- ----------- END OF STORY ---------------- -->
+            <!-- Swiper navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
+
+          <!-- ----------- END OF STORY ---------------- -->
 
           <!-- ------------------------ END OF STORY CONTAINER ----------------------- -->
 
@@ -328,7 +295,7 @@
               id="create_post"
             />
             <!-- <button class="btn btn_primary">Post</button> -->
-            <input type="submit" value="Post" class="btn btn_primary" />
+            <input type="submit" value="Post" class="btn btn_primary middle_post_btn" />
           </form>
 
           <!-- -----------END OF MIDDLE FORM ---------------- -->
@@ -345,7 +312,6 @@
                   <div class="profile_photo">
                     <img src="/images/profile-11.jpg" alt="profile_photo" />
                   </div>
-
 
                   <div class="feed_heading_profile_info">
                     <h4>SamVic Codes</h4>
@@ -1029,14 +995,15 @@
                 <div class="requests_info">
                   <h4>Bill Gates</h4>
                   <p class="text_muted">10 mutual friends</p>
+                  <p class="accept_request">You have accepted request</p>
                 </div>
               </div>
 
               <!-- ----------- REQUEST BUTTONS ---------------- -->
 
               <div class="request_btns">
-                <button class="btn btn_primary">Accept</button>
-                <button class="btn">Decline</button>
+                <button class="btn btn_primary" id="accept">Accept</button>
+                <button class="btn" id="decline">Decline</button>
               </div>
             </div>
 
@@ -1051,14 +1018,15 @@
                 <div class="requests_info">
                   <h4>Mark Zuckerberg</h4>
                   <p class="text_muted">8 mutual friends</p>
+                  <p class="accept_request">You have accepted request</p>
                 </div>
               </div>
 
               <!-- ----------- REQUEST BUTTONS ---------------- -->
 
               <div class="request_btns">
-                <button class="btn btn_primary">Accept</button>
-                <button class="btn">Decline</button>
+                <button class="btn btn_primary" id="accept">Accept</button>
+                <button class="btn" id="decline">Decline</button>
               </div>
             </div>
             <!-- ----------- REQUEST 3 ---------------- -->
@@ -1072,14 +1040,15 @@
                 <div class="requests_info">
                   <h4>Donald Trump</h4>
                   <p class="text_muted">15 mutual friends</p>
+                  <p class="accept_request">You have accepted request</p>
                 </div>
               </div>
 
               <!-- ----------- REQUEST BUTTONS ---------------- -->
 
               <div class="request_btns">
-                <button class="btn btn_primary">Accept</button>
-                <button class="btn">Decline</button>
+                <button class="btn btn_primary" id="accept">Accept</button>
+                <button class="btn" id="decline">Decline</button>
               </div>
             </div>
 
@@ -1094,14 +1063,15 @@
                 <div class="requests_info">
                   <h4>Elon Musk</h4>
                   <p class="text_muted">16 mutual friends</p>
+                  <p class="accept_request">You have accepted request</p>
                 </div>
               </div>
 
               <!-- ----------- REQUEST BUTTONS ---------------- -->
 
               <div class="request_btns">
-                <button class="btn btn_primary">Accept</button>
-                <button class="btn">Decline</button>
+                <button class="btn btn_primary" id="accept">Accept</button>
+                <button class="btn" id="decline">Decline</button>
               </div>
             </div>
 
@@ -1116,14 +1086,15 @@
                 <div class="requests_info">
                   <h4>Mr Segun</h4>
                   <p class="text_muted">2 mutual friends</p>
+                  <p class="accept_request">You have accepted request</p>
                 </div>
               </div>
 
               <!-- ----------- REQUEST BUTTONS ---------------- -->
 
               <div class="request_btns">
-                <button class="btn btn_primary">Accept</button>
-                <button class="btn">Decline</button>
+                <button class="btn btn_primary" id="accept">Accept</button>
+                <button class="btn" id="decline">Decline</button>
               </div>
             </div>
           </div>
@@ -1136,65 +1107,75 @@
         <!-- ===================== THEME CUSTOMIZATION ===================== -->
 
         <div class="theme">
-          <div class="theme_card">
-            <h2>Customize your theme</h2>
-            <p class="text_muted">
-              manage your font size, color, and background.
-            </p>
-            <!-- CHOOSE FONT SIZE -->
-            <div class="font">
-              <h4>font size</h4>
+          <!-- THEME WRAPPER -->
 
-              <div class="font_size_wrapper">
-                <h6>Aa</h6>
+          <div class="theme_wrapper">
+            <div class="theme_card">
+              <h2>Customize your theme</h2>
+              <p class="text_muted">
+                manage your font size, color, and background.
+              </p>
+              <!-- CHOOSE FONT SIZE -->
+              <div class="font">
+                <h4>font size</h4>
 
-                <div class="font_size_container">
-                  <span class="font_resizer font_resizer_1"></span>
-                  <span class="font_resizer font_resizer_2"></span>
-                  <span class="font_resizer font_resizer_3"></span>
-                  <span class="font_resizer font_resizer_4"></span>
-                  <span class="font_resizer font_resizer_5"></span>
+                <div class="font_size_wrapper">
+                  <h6>Aa</h6>
+
+                  <div class="font_size_container">
+                    <span class="font_resizer font_resizer_1"></span>
+                    <span class="font_resizer font_resizer_2"></span>
+                    <span class="font_resizer font_resizer_3"></span>
+                    <span class="font_resizer font_resizer_4"></span>
+                    <span class="font_resizer font_resizer_5"></span>
+                  </div>
+
+                  <h3>Aa</h3>
                 </div>
+              </div>
 
-                <h3>Aa</h3>
+              <!-- CHOOSE COLOR -->
+
+              <div class="color_container">
+                <h4>Color</h4>
+
+                <div class="colors_wrapper">
+                  <span class="choose_color choose_color_1 active"></span>
+                  <span class="choose_color choose_color_2"></span>
+                  <span class="choose_color choose_color_3"></span>
+                  <span class="choose_color choose_color_4"></span>
+                  <span class="choose_color choose_color_5"></span>
+                </div>
+              </div>
+
+              <!-- CHOOSE BACKGROUND COLOR -->
+
+              <div class="background">
+                <h4>Background</h4>
+
+                <div class="background_wrapper">
+                  <div
+                    class="background_container background_container_1 active"
+                  >
+                    <span></span>
+                    <h4>Light</h4>
+                  </div>
+
+                  <div class="background_container background_container_2">
+                    <span></span>
+                    <h4>Dim</h4>
+                  </div>
+
+                  <div class="background_container background_container_3">
+                    <span></span>
+                    <h4>Lights out</h4>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- CHOOSE COLOR -->
-
-            <div class="color_container">
-              <h4>Color</h4>
-
-              <div class="colors_wrapper">
-                <span class="choose_color choose_color_1 active"></span>
-                <span class="choose_color choose_color_2"></span>
-                <span class="choose_color choose_color_3"></span>
-                <span class="choose_color choose_color_4"></span>
-                <span class="choose_color choose_color_5"></span>
-              </div>
-            </div>
-
-            <!-- CHOOSE BACKGROUND COLOR -->
-
-            <div class="background">
-              <h4>Background</h4>
-
-              <div class="background_wrapper">
-                <div class="background_container background_container_1 active">
-                  <span></span>
-                  <h4>Light</h4>
-                </div>
-
-                <div class="background_container background_container_2">
-                  <span></span>
-                  <h4>Dim</h4>
-                </div>
-
-                <div class="background_container background_container_3">
-                  <span></span>
-                  <h4>Lights out</h4>
-                </div>
-              </div>
+            <div class="theme_close">
+              <span><i class="fa fa-close"></i></span>
             </div>
           </div>
         </div>
@@ -1227,7 +1208,7 @@
                 id="profile_upload"
               />
 
-              <button class="btn btn_primary">Log Out</button>
+              <button class="btn btn_primary profile_logout">Log Out</button>
             </div>
 
             <div class="personal_profile_close">
@@ -1236,13 +1217,54 @@
           </div>
         </div>
 
-        <!-- ===================== END OF PERSONAL PROFILE POP UP ===================== -->
+        <!-- ===================== ADD POST POP UP ===================== -->
+
+        <div class="add_post">
+          <div class="add_post_wrapper">
+            <div class="add_post_popup">
+              <!-- profile info -->
+
+              <div class="add_post_info">
+                <h2>Add New Post</h2>
+                <h4>Title</h4>
+              </div>
+
+              <input type="text" class="add_post_input" />
+
+              <img src="" alt="" />
+
+              <div class="post_upload_container">
+                <label for="post_upload" class="add_post_label"
+                  ><span><i class="fa fa-plus"></i></span> Update A Picture
+                </label>
+
+                <input
+                  type="file"
+                  name=""
+                  accept="image/jpg image/jpeg image/png"
+                  id="post_upload"
+                />
+              </div>
+
+              <button class="btn btn_primary add_post_submit">Add Post</button>
+            </div>
+
+            <div class="add_post_close">
+              <span><i class="fa fa-close"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================== END OF ADD POST POP UP ===================== -->
       </div>
 
       <!-- ===================== END OF MAIN CONTAINER ===================== -->
     </main>
 
+    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
     <script src="index.js"></script>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
   </body>
 </html>
