@@ -605,4 +605,43 @@ profileUploadInput.addEventListener('change', function (event) {
   }
 });
 
+// ADD STORY SECTION
+
+const addStoryContainer = document.getElementById('addStoryContainer');
+const storyUploadInput = document.getElementById('storyUploadInput');
+const addStoryIcon = addStoryContainer.querySelector('.add_story_icon');
+const createStoryText = addStoryContainer.querySelector('p');
+const profilePhotoDiv = addStoryContainer.querySelector('.profile_photo');
+
+// Event listener to trigger the file input on container click
+addStoryContainer.addEventListener('click', () => {
+  storyUploadInput.click();
+});
+
+// Event listener for file input change
+storyUploadInput.addEventListener('change', function(event) {
+  const file = event.target.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      // Set the uploaded image as the background image of addStoryContainer with optimal styling
+      addStoryContainer.style.backgroundImage = `url(${e.target.result})`;
+      addStoryContainer.style.backgroundSize = 'cover';
+      addStoryContainer.style.backgroundPosition = 'center';
+      addStoryContainer.style.backgroundRepeat = 'no-repeat';
+      // addStoryContainer.style.borderRadius = '10px'; // Optional: adjust border-radius for a rounded look
+
+      // Hide the add_story_icon, create_story_text, and profile_photo div after an image is uploaded
+      addStoryIcon.style.display = 'none';
+      createStoryText.style.display = 'none';
+      profilePhotoDiv.style.display = 'none';
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
 
