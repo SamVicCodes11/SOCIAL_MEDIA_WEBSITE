@@ -1,38 +1,6 @@
-// const swiper = new Swiper('.mySwiper', {
-//   slidesPerView: 6, // Automatically adjusts slides based on size
-//   spaceBetween: 10,
-//   navigation: {
-//       nextEl: '.swiper-button-next',
-//       prevEl: '.swiper-button-prev',
-//   },
-//   pagination: {
-//       el: '.swiper-pagination',
-//       clickable: true,
-//   },
-//   autoplay: false, // Disable autoplay for user control
-//   grabCursor: true, // Change cursor to pointer when hovering
-//   touchRatio: 1, // Enable touch sliding
-//   breakpoints: {
-//       320: {
-//           slidesPerView: 3,
-//           spaceBetween: 5,
-//       },
-//       640: {
-//           slidesPerView: 4,
-//           spaceBetween: 10,
-//       },
-//       1024: {
-//           slidesPerView: 5,
-//           spaceBetween: 10,
-//       },
-//       1280: {
-//           slidesPerView: 6,
-//           spaceBetween: 10,
-//       },
-//   },
-// });
-
 const menuItem = document.querySelectorAll(".menuItem");
+const notifyPop = document.querySelector(".notification_popup");
+let notificationCountHidden = false; // Flag to track if count has been hidden
 
 const displayActiveNone = () => {
   menuItem.forEach((item) => {
@@ -40,39 +8,28 @@ const displayActiveNone = () => {
   });
 };
 
-// displayActiveNone();
-
-// menu items active state
 menuItem.forEach((menu) => {
   menu.addEventListener("click", () => {
     displayActiveNone();
-
     menu.classList.add("active");
 
-    // Notification
+    // Toggle notification popup display for "notification_menu"
+    if (menu.id === "notification_menu") {
+      const isPopupVisible = notifyPop.style.display === "block";
+      notifyPop.style.display = isPopupVisible ? "none" : "block";
 
-    const notifyPop = document.querySelector(".notification_popup");
-
-    if (menu.id && menu.id === "notification_menu") {
-      menu.querySelector(".notification_popup").style.display = "block";
-      // removeNotifyPop();
-
-      menu.querySelector(".notification_count").style.display = "none";
+      // Hide notification count only once
+      const notificationCount = menu.querySelector(".notification_count");
+      if (notificationCount && !notificationCountHidden) {
+        notificationCount.style.display = "none";
+        notificationCountHidden = true; // Set flag to true after hiding
+      }
     } else {
+      // Hide the notification popup if any other menu item is clicked
       notifyPop.style.display = "none";
-    }
-
-    if (menu.id && menu.id === "message_menuItem") {
-      menu.querySelector(".notification_count").style.display = "none";
-    } else {
-      // menu.querySelector(".notification_count").style.display = "block";
     }
   });
 });
-
-// window.addEventListener("scroll", () => {
-//   notifyPop.style.display = "none";
-// });
 
 // MESSAGES SECTION
 
@@ -350,7 +307,7 @@ middleFormPostBtn.addEventListener("click", (e) => {
   middleFormPostInput.value = "";
 });
 
-// ADD POST
+// ADD POST POP UP
 
 const addPostLink = document.querySelector(".add_post_link");
 const leftBtn = document.querySelector(".left_btn");
@@ -385,6 +342,8 @@ addPost.addEventListener("click", (e) => {
   }
 });
 
+// ADD POST POP UP SUBMIT
+
 const addPostSubmit = document.querySelector(".add_post_submit");
 const addPostClose = document.querySelector(".add_post_close");
 
@@ -406,19 +365,7 @@ addPostClose.addEventListener("click", () => {
   addPostInput.value = "";
 });
 
-// FEED LIKE
-
-const liking = document.querySelector(".love_feed");
-
-liking.addEventListener("click", () => {
-  liking.classList.toggle("like_feed");
-});
-
-const bookmark = document.querySelector(".bookmark");
-
-bookmark.addEventListener("click", () => {
-  bookmark.classList.toggle("toggle_bookmark");
-});
+// ADD POST UPDATE PROFILE
 
 //  REQUEST
 
@@ -444,3 +391,218 @@ decline.forEach((request) => {
     request.parentElement.parentElement.style.display = "none";
   });
 });
+
+// MIDDLE FORM SECTION
+
+const middleFormProfilePopup = document.querySelector(
+  ".middle_form .profile_photo"
+);
+
+middleFormProfilePopup.addEventListener("click", (e) => {
+  personalProfile.style.display = "grid";
+  setTimeout(() => profileWrapper.classList.add("active"), 10);
+});
+
+// FEEDS SECTION
+
+// FEED PROFILE POPUP SECTION
+
+const feedProfilePopup = document.querySelectorAll(
+  ".feed_heading .profile_photo"
+);
+
+feedProfilePopup.forEach((profile) => {
+  profile.addEventListener("click", (e) => {
+    // e.preventDefault();
+
+    personalProfile.style.display = "grid";
+    setTimeout(() => profileWrapper.classList.add("active"), 10);
+  });
+});
+
+// FEEDS EDIT & DELETE SECTION
+
+// Close dropdowns if they are open
+const closeDropdowns = () => {
+  // Close all comments dropdowns
+  document.querySelectorAll(".comments_dropdown").forEach((dropdown) => {
+    dropdown.classList.remove("active");
+  });
+
+  // Close all share dropdowns
+  document.querySelectorAll(".share_dropdown").forEach((dropdown) => {
+    dropdown.classList.remove("active");
+  });
+};
+
+// Event listener for feed edit menu clicks
+const feedEdits = document.querySelectorAll(".feed_edit");
+
+feedEdits.forEach((edit) => {
+  edit.addEventListener("click", (e) => {
+    // Close notification popup if it's open
+    notifyPop.style.display = "none"; // Close the notification popup
+
+    // Close other dropdowns
+    closeDropdowns();
+
+    const menu = edit.querySelector(".feed_edit_menu");
+    menu.classList.toggle("active"); // Toggle the active state for the edit menu
+
+    // Prevent click from bubbling to the document listener
+    e.stopPropagation();
+  });
+});
+
+// FEED LIKE
+
+const liking = document.querySelectorAll(".love_feed");
+
+liking.forEach((like) => {
+  like.addEventListener("click", () => {
+    like.classList.toggle("like_feed");
+  });
+});
+
+// COMMENTS SECTION
+const feeds = document.querySelectorAll(".feed");
+
+feeds.forEach((feed) => {
+  const commentIcon = feed.querySelector(".comments_icon");
+  const commentDropdown = feed.querySelector(".comments_dropdown");
+
+  // Toggle active class to apply the scaling effect
+  commentIcon.addEventListener("click", () => {
+    commentDropdown.classList.toggle("active");
+  });
+});
+
+feeds.forEach((feed) => {
+  const shareIcon = feed.querySelector(".share_icon");
+  const shareDropdown = feed.querySelector(".share_dropdown");
+
+  shareIcon.addEventListener("click", () => {
+    setTimeout(() => shareDropdown.classList.toggle("active"), 10);
+  });
+});
+
+// FEED BOOKMARK
+const bookmarks = document.querySelectorAll(".bookmark");
+
+bookmarks.forEach((bookmark) => {
+  bookmark.addEventListener("click", () => {
+    bookmark.classList.toggle("toggle_bookmark");
+  });
+});
+
+// document.addEventListener("scroll", () => {
+//   notifyPop.style.display = "none";
+// });
+
+//  REMOVE DROPDOWN SECTION
+
+document.addEventListener("click", (e) => {
+  // Close notifyPop if clicked outside
+  if (!e.target.closest("#notification_menu")) {
+    notifyPop.style.display = "none";
+  }
+
+  // Close all comments dropdowns if clicked outside
+  if (
+    !e.target.closest(".comments_icon") &&
+    !e.target.closest(".comments_dropdown")
+  ) {
+    document.querySelectorAll(".comments_dropdown").forEach((dropdown) => {
+      dropdown.classList.remove("active");
+    });
+  }
+
+  // Close all share dropdowns if clicked outside
+  if (
+    !e.target.closest(".share_icon") &&
+    !e.target.closest(".share_dropdown")
+  ) {
+    document.querySelectorAll(".share_dropdown").forEach((dropdown) => {
+      dropdown.classList.remove("active");
+    });
+  }
+
+  // Close edit menu if clicked outside
+  if (!e.target.closest(".feed_edit") && !e.target.closest(".feed_edit_menu")) {
+    document.querySelectorAll(".feed_edit_menu").forEach((menu) => {
+      menu.classList.remove("active");
+    });
+  }
+});
+
+// ADD POST // UPLOAD IMAGE // TITLE
+
+// Select necessary elements
+const titleInput = document.querySelector(".add_post_input");
+const fileInput = document.querySelector("#post_upload");
+const imagePreview = document.querySelector(".post_image_preview");
+const addPostButton = document.querySelector(".add_post_submit");
+const addPostLabel = document.querySelector(".add_post_label");
+
+// Function to reset the form to its original state
+function resetForm() {
+  titleInput.value = ""; // Clear the title input
+  fileInput.value = ""; // Clear the file input
+  imagePreview.style.display = "none"; // Hide the image preview
+  imagePreview.src = ""; // Reset the image source
+  addPostLabel.style.display = "block"; // Show the label again
+  addPostLabel.innerHTML =
+    '<span><i class="fa fa-plus"></i></span> Update A Picture'; // Reset label text
+}
+
+// Event listener for file input change
+fileInput.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      imagePreview.src = e.target.result; // Set the image preview
+      imagePreview.style.display = "block"; // Show the image preview
+      addPostLabel.style.display = "none"; // Hide the label when image is uploaded
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Event listener for Add Post button
+addPostButton.addEventListener("click", function () {
+  // Here you can add the logic to submit the post
+  // After that, reset the form
+  resetForm();
+});
+
+
+// UPDATE PERSONAL PROFILE PHOTO
+
+// Select the file input and upload label
+const profileUploadInput = document.getElementById('profile_upload');
+const profileUploadLabel = document.getElementById('profileUploadLabel');
+
+// Event listener for file input change
+profileUploadInput.addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  
+  if (file) {
+    const reader = new FileReader();
+    
+    reader.onload = function (e) {
+      // Find all images with the class "profile_photo_img"
+      const profileImages = document.querySelectorAll('.profile_photo_img');
+      
+      // Update the src for each profile photo image
+      profileImages.forEach(img => {
+        img.src = e.target.result;
+      });
+      
+    };
+    
+    reader.readAsDataURL(file);
+  }
+});
+
+

@@ -15,17 +15,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
-    <!-- Add Swiper CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
-
-    <!-- SWIPER JS LINK -->
-
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    /> -->
   </head>
   <body>
     <nav>
@@ -47,7 +36,11 @@
           <label class="btn btn_primary add_post_link">Add Post</label>
 
           <div class="profile_photo">
-            <img src="/images/MY PIC.jpg" alt="profile_photo" />
+            <img
+              src="images/MY PIC.jpg"
+              alt="profile photo"
+              class="profile_photo_img"
+            />
           </div>
         </div>
       </div>
@@ -64,7 +57,11 @@
 
           <a class="profile">
             <div class="profile_photo">
-              <img src="/images/MY PIC.jpg" alt="profile_photo" />
+              <img
+                src="images/MY PIC.jpg"
+                alt="profile photo"
+                class="profile_photo_img"
+              />
             </div>
 
             <div class="profile-info">
@@ -214,7 +211,7 @@
               <h3>Theme</h3>
             </a>
 
-            <a class="menuItem active">
+            <a class="menuItem">
               <span><i class="fa-solid fa-gear"></i></span>
 
               <h3>Settings</h3>
@@ -237,45 +234,77 @@
         <div class="middle">
           <!-- ------------------------ STORY CONTAINER ----------------------- -->
 
-          <div class="stories swiper mySwiper">
-            <div class="story_wrapper swiper-wrapper">
+          <div class="stories">
+            <div class="story_wrapper">
               <!-- Add Story Button -->
-              <div class="add_story swiper-slide">
+               
+              <div class="add_story story">
+                <div class="profile_photo">
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
+                </div>
+
                 <i class="fa fa-plus-circle"></i>
+
                 <p>Add Your Story</p>
               </div>
 
               <!-- Story Slides -->
+              <div class="story">
+                <div class="profile_photo">
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
+                </div>
+                <p>Barack Obama</p>
+              </div>
 
-              <div class="story swiper-slide">
+              <div class="story">
+                <div class="profile_photo">
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
+                </div>
+                <p>Donald Trump</p>
+              </div>
+
+              <div class="story">
+                <div class="profile_photo">
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
+                </div>
+                <p>Donald Trump</p>
+              </div>
+
+              <div class="story">
                 <div class="profile_photo">
                   <img src="/images/profile-3.jpg" alt="story_profile" />
                 </div>
                 <p>Your Story 3</p>
               </div>
-              <div class="story swiper-slide">
+
+              <div class="story">
+                <div class="profile_photo">
+                  <img src="/images/profile-3.jpg" alt="story_profile" />
+                </div>
+                <p>Your Story 3</p>
+              </div>
+
+              <div class="story">
                 <div class="profile_photo">
                   <img src="/images/profile-4.jpg" alt="story_profile" />
                 </div>
                 <p>Your Story 4</p>
               </div>
-              <div class="story swiper-slide">
+
+              <div class="story">
                 <div class="profile_photo">
                   <img src="/images/profile-5.jpg" alt="story_profile" />
                 </div>
                 <p>Your Story 5</p>
               </div>
-              <div class="story swiper-slide">
+
+              <div class="story">
                 <div class="profile_photo">
                   <img src="/images/profile-6.jpg" alt="story_profile" />
                 </div>
                 <p>Your Story 6</p>
               </div>
             </div>
-
-            <!-- Swiper navigation buttons -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
           </div>
 
           <!-- ----------- END OF STORY ---------------- -->
@@ -286,7 +315,7 @@
 
           <form class="middle_form" action="">
             <div class="profile_photo">
-              <img src="/images/MY PIC.jpg" alt="" />
+              <img src="/images/MY PIC.jpg" alt="" class="profile_photo_img" />
             </div>
 
             <input
@@ -295,7 +324,11 @@
               id="create_post"
             />
             <!-- <button class="btn btn_primary">Post</button> -->
-            <input type="submit" value="Post" class="btn btn_primary middle_post_btn" />
+            <input
+              type="submit"
+              value="Post"
+              class="btn btn_primary middle_post_btn"
+            />
           </form>
 
           <!-- -----------END OF MIDDLE FORM ---------------- -->
@@ -307,10 +340,14 @@
             <div class="feed">
               <!-- ----------- HEADING ---------------- -->
 
-              <div href="/" class="feed_heading">
+              <div class="feed_heading">
                 <div class="feed_heading_profile">
                   <div class="profile_photo">
-                    <img src="/images/profile-11.jpg" alt="profile_photo" />
+                    <img
+                      src="/images/MY PIC.jpg"
+                      alt="profile_photo"
+                      class="profile_photo_img"
+                    />
                   </div>
 
                   <div class="feed_heading_profile_info">
@@ -321,6 +358,8 @@
 
                 <span class="feed_edit">
                   <i class="fa-solid fa-ellipsis"></i>
+
+                  <!-- FEED THREE DOTS ELLIPSIS POPUP -->
 
                   <ul class="feed_edit_menu">
                     <li><i class="fa fa-pen"></i> Edit</li>
@@ -340,8 +379,88 @@
               <div class="feed_actions">
                 <div class="feed_actions_left">
                   <i class="fa fa-heart love_feed"></i>
-                  <i class="fa fa-comment-dots"></i>
-                  <i class="fa fa-share-alt"></i>
+
+                  <!-- FEED COMMENT -->
+
+                  <div class="comments_icon_contain">
+                    <i class="fa fa-comment-dots comments_icon"></i>
+
+                    <div class="comments_dropdown">
+                      <h6>please share your comments</h6>
+
+                      <div class="contact-socials">
+                        <a
+                          href="https://www.facebook.com/akpobasa.victor?mibextid=rS40aB7S9Ucbxw6v"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/samviccodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a
+                          href="https://wa.me/2348146557494"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a
+                          href="https://x.com/SamVicCodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-x-twitter footer-icon"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- FEED SHARE -->
+
+                  <div class="share_icon_contain">
+                    <i class="fa fa-share-alt share_icon"></i>
+
+                    <div class="share_dropdown">
+                      <h6>follow us for more designs like this</h6>
+
+                      <div class="contact-socials">
+                        <a
+                          href="https://www.facebook.com/akpobasa.victor?mibextid=rS40aB7S9Ucbxw6v"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/samviccodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a
+                          href="https://wa.me/2348146557494"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a
+                          href="https://x.com/SamVicCodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-x-twitter footer-icon"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <i class="fa fa-bookmark bookmark"></i>
@@ -382,74 +501,7 @@
             <div class="feed">
               <!-- ----------- HEADING ---------------- -->
 
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/profile-12.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-
-              <!-- -----------FEED IMAGE ---------------- -->
-
-              <div class="feed_img">
-                <img src="/images/feed-2.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
-            <!-- -----------FEED 3---------------- -->
-
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
+              <div class="feed_heading">
                 <div class="feed_heading_profile">
                   <div class="profile_photo">
                     <img src="/images/MY PIC.jpg" alt="profile_photo" />
@@ -461,141 +513,16 @@
                   </div>
                 </div>
 
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
+                <span class="feed_edit">
+                  <i class="fa-solid fa-ellipsis"></i>
 
-              <!-- -----------FEED IMAGE ---------------- -->
+                  <!-- FEED THREE DOTS ELLIPSIS POPUP -->
 
-              <div class="feed_img">
-                <img src="/images/feed-1.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
+                  <ul class="feed_edit_menu">
+                    <li><i class="fa fa-pen edit_delete"></i> Edit</li>
+                    <li><i class="fa fa-trash edit_delete"></i> Delete</li>
+                  </ul>
                 </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
-            <!-- -----------FEED 4---------------- -->
-
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/profile-13.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-
-              <!-- -----------FEED IMAGE ---------------- -->
-
-              <div class="feed_img">
-                <img src="/images/feed-4.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
-            <!-- -----------FEED 5---------------- -->
-
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/profile-15.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
               </div>
 
               <!-- -----------FEED IMAGE ---------------- -->
@@ -608,12 +535,92 @@
 
               <div class="feed_actions">
                 <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
+                  <i class="fa fa-heart love_feed"></i>
+
+                  <!-- FEED COMMENT -->
+
+                  <div class="comments_icon_contain">
+                    <i class="fa fa-comment-dots comments_icon"></i>
+
+                    <div class="comments_dropdown">
+                      <h6>please share your comments</h6>
+
+                      <div class="contact-socials">
+                        <a
+                          href="https://www.facebook.com/akpobasa.victor?mibextid=rS40aB7S9Ucbxw6v"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/samviccodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a
+                          href="https://wa.me/2348146557494"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a
+                          href="https://x.com/SamVicCodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-x-twitter footer-icon"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- FEED SHARE -->
+
+                  <div class="share_icon_contain">
+                    <i class="fa fa-share-alt share_icon"></i>
+
+                    <div class="share_dropdown">
+                      <h6>follow us for more designs like this</h6>
+
+                      <div class="contact-socials">
+                        <a
+                          href="https://www.facebook.com/akpobasa.victor?mibextid=rS40aB7S9Ucbxw6v"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/in/samviccodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a
+                          href="https://wa.me/2348146557494"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a
+                          href="https://x.com/SamVicCodes"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <i class="fa-brands fa-x-twitter footer-icon"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <i class="fa-regular fa-bookmark"></i>
+                <i class="fa fa-bookmark bookmark"></i>
               </div>
 
               <!-- -----------LIKED BY ---------------- -->
@@ -632,7 +639,7 @@
                 </span>
 
                 <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
+                  Liked by <b>Musa Bako </b>and <b>2,222 others</b>
                 </p>
               </div>
 
@@ -645,208 +652,20 @@
 
               <p class="text_muted comments">View all 277 comments</p>
             </div>
+
+            <!-- -----------FEED 2---------------- -->
+
+            <!-- -----------FEED 3---------------- -->
+
+            <!-- -----------FEED 4---------------- -->
+
+            <!-- -----------FEED 5---------------- -->
+
             <!-- -----------FEED 6---------------- -->
 
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/profile-16.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-
-              <!-- -----------FEED IMAGE ---------------- -->
-
-              <div class="feed_img">
-                <img src="/images/feed-6.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
             <!-- -----------FEED 7---------------- -->
 
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/MY PIC.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-
-              <!-- -----------FEED IMAGE ---------------- -->
-
-              <div class="feed_img">
-                <img src="/images/feed-7.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
-
             <!-- -----------FEED 8 ---------------- -->
-
-            <div class="feed">
-              <!-- ----------- HEADING ---------------- -->
-
-              <div href="/" class="feed_heading">
-                <div class="feed_heading_profile">
-                  <div class="profile_photo">
-                    <img src="/images/profile-17.jpg" alt="profile_photo" />
-                  </div>
-
-                  <div class="feed_heading_profile_info">
-                    <h4>SamVic Codes</h4>
-                    <p class="text_muted">Dubai, 15 MINUTES AGO</p>
-                  </div>
-                </div>
-
-                <i class="fa-solid fa-ellipsis"></i>
-              </div>
-
-              <!-- -----------FEED IMAGE ---------------- -->
-
-              <div class="feed_img">
-                <img src="/images/feed-3.jpg" alt="feed" />
-              </div>
-
-              <!-- -----------FEED ACTION ---------------- -->
-
-              <div class="feed_actions">
-                <div class="feed_actions_left">
-                  <i class="fa-regular fa-heart"></i>
-                  <i class="fa-regular fa-comment-dots"></i>
-                  <i class="fa-solid fa-share-nodes"></i>
-                </div>
-
-                <i class="fa-regular fa-bookmark"></i>
-              </div>
-
-              <!-- -----------LIKED BY ---------------- -->
-
-              <!-- -----------LIKED BY PHOTO ---------------- -->
-
-              <div class="liked_by">
-                <span class="profile_photo">
-                  <img src="/images/profile-1.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-4.jpg" alt="liked_by image" />
-                </span>
-                <span class="profile_photo">
-                  <img src="/images/profile-3.jpg" alt="liked_by image" />
-                </span>
-
-                <p class="liked_by_info">
-                  Liked by <b>Musa Bako </b>and 2,222 others
-                </p>
-              </div>
-
-              <!-- -----------FEED CAPTION AND COMMENTS ---------------- -->
-
-              <p class="caption">
-                <b>DesCoded</b> Lorem ipsum dolor sit amet consectetur.
-                <span class="harsh_tag">#Lifestyle</span>
-              </p>
-
-              <p class="text_muted comments">View all 277 comments</p>
-            </div>
 
             <!-- -----------END OF FEED ---------------- -->
           </div>
@@ -1117,7 +936,7 @@
               </p>
               <!-- CHOOSE FONT SIZE -->
               <div class="font">
-                <h4>font size</h4>
+                <h4>font size(click button to resize)</h4>
 
                 <div class="font_size_wrapper">
                   <h6>Aa</h6>
@@ -1187,68 +1006,101 @@
         <div class="personal_profile">
           <div class="personal_profile_wrapper">
             <div class="profile_popup">
-              <!-- profile info -->
-
+              <!-- Profile Info -->
               <div class="personal_profile_info">
                 <h2>SamVic Codes</h2>
                 <p>@SamVicCodes</p>
               </div>
 
+              <!-- Profile Photo Preview -->
               <div class="profile_photo">
-                <img src="images/MY PIC.jpg" alt="profile photo" />
+                <img
+                  src="images/MY PIC.jpg"
+                  alt="profile photo"
+                  class="profile_photo_img"
+                />
               </div>
 
-              <label for="profile_upload" class="btn btn_primary"
-                >Update Profile Picture</label
+              <!-- Update Profile Picture Button -->
+              <label
+                for="profile_upload"
+                class="btn btn_primary"
+                id="profileUploadLabel"
               >
+                Update Profile Picture
+              </label>
               <input
                 type="file"
-                name=""
-                accept="image/jpg image/jpeg image/png"
+                accept="image/jpg, image/jpeg, image/png"
                 id="profile_upload"
+                style="display: none"
               />
 
+              <!-- Logout Button -->
               <button class="btn btn_primary profile_logout">Log Out</button>
             </div>
 
+            <!-- Close Button -->
             <div class="personal_profile_close">
               <span><i class="fa fa-close"></i></span>
             </div>
           </div>
         </div>
 
+        <!-- Example of other instances on the page -->
+        <!-- <div class="profile_photo">
+          <img src="images/MY PIC.jpg" alt="profile photo" class="profile_photo_img" />
+        </div>
+        <div class="profile_photo">
+          <img src="images/MY PIC.jpg" alt="profile photo" class="profile_photo_img" />
+        </div> -->
+
         <!-- ===================== ADD POST POP UP ===================== -->
 
         <div class="add_post">
           <div class="add_post_wrapper">
             <div class="add_post_popup">
-              <!-- profile info -->
-
+              <!-- Profile Info -->
               <div class="add_post_info">
                 <h2>Add New Post</h2>
                 <h4>Title</h4>
               </div>
 
-              <input type="text" class="add_post_input" />
+              <!-- Title Input -->
+              <input
+                type="text"
+                class="add_post_input"
+                placeholder="Enter post title..."
+              />
 
-              <img src="" alt="" />
+              <!-- Image Preview -->
+              <img
+                src=""
+                alt="Image preview"
+                class="post_image_preview"
+                style="display: none"
+              />
 
+              <!-- Image Upload Container -->
               <div class="post_upload_container">
-                <label for="post_upload" class="add_post_label"
-                  ><span><i class="fa fa-plus"></i></span> Update A Picture
+                <label for="post_upload" class="add_post_label">
+                  <span><i class="fa fa-plus"></i></span> Update A Picture
                 </label>
-
                 <input
                   type="file"
-                  name=""
-                  accept="image/jpg image/jpeg image/png"
                   id="post_upload"
+                  accept="image/jpg, image/jpeg, image/png"
+                  class="post_upload_input"
                 />
               </div>
 
-              <button class="btn btn_primary add_post_submit">Add Post</button>
+              <!-- Submit Button -->
+              <button class="btn btn_primary add_post_submit">
+                Submit Post
+              </button>
             </div>
 
+            <!-- Close Button -->
             <div class="add_post_close">
               <span><i class="fa fa-close"></i></span>
             </div>
@@ -1261,10 +1113,6 @@
       <!-- ===================== END OF MAIN CONTAINER ===================== -->
     </main>
 
-    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
-
     <script src="index.js"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
   </body>
 </html>
