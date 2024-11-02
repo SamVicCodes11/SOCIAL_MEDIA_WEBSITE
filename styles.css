@@ -1088,14 +1088,12 @@ main .right {
   gap: 1rem;
   z-index: 999999;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  /*opacity: 0;
-  */
-  /* transform: scale(0) rotate(0deg); */
+  transform: scale(0) rotate(0deg);
 }
 
 .personal_profile_wrapper.active {
-  /* opacity: 1; */
   transform: scale(1) rotate(360deg);
+
 }
 
 .profile_popup {
@@ -1162,12 +1160,11 @@ main .right {
   display: flex;
   gap: 1rem;
   justify-content: center;
-
+  transform: scale(0) rotate(0deg);
   z-index: 999999;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* transform: scale(0) rotate(0deg); */
 .add_post_wrapper.active {
   opacity: 1;
   transform: scale(1) rotate(360deg);
@@ -1176,7 +1173,6 @@ main .right {
 .add_post_popup {
   width: 20rem;
   padding: 2rem;
-  /* padding: var(--card-padding); */
   border-radius: var(--card-border-radius);
   background: var(--color-white);
   box-shadow: 0 0 1rem var(--color-primary);
