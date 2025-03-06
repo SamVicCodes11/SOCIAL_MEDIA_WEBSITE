@@ -499,6 +499,9 @@ bookmarks.forEach((bookmark) => {
 //   notifyPop.style.display = "none";
 // });
 
+
+// WINDOW SECTION
+
 //  REMOVE DROPDOWN SECTION
 
 document.addEventListener("click", (e) => {
@@ -506,6 +509,7 @@ document.addEventListener("click", (e) => {
   if (!e.target.closest("#notification_menu")) {
     notifyPop.style.display = "none";
   }
+
 
   // Close all comments dropdowns if clicked outside
   if (
@@ -537,12 +541,14 @@ document.addEventListener("click", (e) => {
 
 // ADD POST // UPLOAD IMAGE // TITLE
 
+
 // Select necessary elements
 const titleInput = document.querySelector(".add_post_input");
 const fileInput = document.querySelector("#post_upload");
 const imagePreview = document.querySelector(".post_image_preview");
 const addPostButton = document.querySelector(".add_post_submit");
 const addPostLabel = document.querySelector(".add_post_label");
+
 
 // Function to reset the form to its original state
 function resetForm() {
@@ -554,6 +560,7 @@ function resetForm() {
   addPostLabel.innerHTML =
     '<span><i class="fa fa-plus"></i></span> Update A Picture'; // Reset label text
 }
+
 
 // Event listener for file input change
 fileInput.addEventListener("change", function (event) {
@@ -605,6 +612,7 @@ profileUploadInput.addEventListener('change', function (event) {
   }
 });
 
+
 // ADD STORY SECTION
 
 const addStoryContainer = document.getElementById('addStoryContainer');
@@ -617,6 +625,7 @@ const profilePhotoDiv = addStoryContainer.querySelector('.profile_photo');
 addStoryContainer.addEventListener('click', () => {
   storyUploadInput.click();
 });
+
 
 // Event listener for file input change
 storyUploadInput.addEventListener('change', function(event) {

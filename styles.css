@@ -45,9 +45,9 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0;
-}
+} */
 
 .container {
   width: 85%;
@@ -434,6 +434,10 @@ main .main_container .left {
 
 .story p {
   position: relative;
+}
+
+#addStoryContainer {
+  cursor: pointer;
 }
 
 .add_story.story .profile_photo {
@@ -1093,7 +1097,6 @@ main .right {
 
 .personal_profile_wrapper.active {
   transform: scale(1) rotate(360deg);
-
 }
 
 .profile_popup {
